@@ -1,5 +1,4 @@
-require('./index.styl')
-
-const component = require('./component')
+import './index.styl'
+import component from './component'
 
 document.body.appendChild(component())

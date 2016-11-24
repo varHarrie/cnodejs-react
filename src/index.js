@@ -1,4 +1,4 @@
-require('./index.css')
+require('./index.styl')
 
 const component = require('./component')
 

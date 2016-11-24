@@ -9,9 +9,13 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /\.css$/,
-      loader: 'style!css'
-    }]
+    loaders: [
+      {test: /\.css$/, loader: 'style!css'},
+      {test: /\.styl$/, loader: 'style!css!stylus'}
+    ]
+  },
+  stylus: {
+    use: [require('nib')()],
+    import: ['~nib/lib/nib/index.styl']
   }
 }

@@ -16,6 +16,9 @@ module.exports = {
     fallback: path.join(root, 'node_modules')
   },
   module: {
+    preLoaders: [
+      {test: /\.jsx?$/, loader: 'eslint', include: path.join(root, 'src'), exclude: /node_modules/}
+    ],
     loaders: [
       {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
       {test: /\.css$/, loader: 'style!css'},

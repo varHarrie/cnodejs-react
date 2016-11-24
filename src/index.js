@@ -1,4 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import HelloTitle from './HelloTitle'
 import './index.styl'
-import component from './component'
 
-document.body.appendChild(component())
+ReactDOM.render(<HelloTitle/>, document.getElementById('app'))

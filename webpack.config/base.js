@@ -12,7 +12,10 @@ module.exports = {
     alias: {
       components: path.join(root, 'src/components'),
       pages: path.join(root, 'src/pages'),
-      styles: path.join(root, 'src/styles')
+      styles: path.join(root, 'src/styles'),
+      routes: path.join(root, 'src/routes'),
+      actions: path.join(root, 'src/redux/actions'),
+      reducers: path.join(root, 'src/redux/reducers')
     },
     extensions: ['', '.js', '.jsx'],
     fallback: path.join(root, 'node_modules')

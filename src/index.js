@@ -1,6 +1,12 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import HelloTitle from './HelloTitle'
-import './index.styl'
+import {render} from 'react-dom'
+import {Router, browserHistory} from 'react-router'
 
-ReactDOM.render(<HelloTitle />, document.getElementById('app'))
+import routes from './routes'
+import 'styles/index.styl'
+
+render(
+  <Router history={browserHistory} routes={routes} />,
+  document.getElementById('app')
+)
+

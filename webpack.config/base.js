@@ -9,6 +9,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+    alias: {
+      components: path.join(root, 'src/components'),
+      pages: path.join(root, 'src/pages'),
+      styles: path.join(root, 'src/styles')
+    },
     extensions: ['', '.js', '.jsx'],
     fallback: path.join(root, 'node_modules')
   },

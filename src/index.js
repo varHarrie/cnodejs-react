@@ -6,6 +6,8 @@ import {Router, browserHistory} from 'react-router'
 
 import app from 'reducers'
 import routes from 'routes'
+import 'react-mdl/extra/material.css'
+import 'react-mdl/extra/material.js'
 import 'styles/index.styl'
 
 const store = createStore(app)

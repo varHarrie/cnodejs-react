@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
 
-import counter from 'reducers/counter'
+import topics from 'reducers/topics'
 
-export default combineReducers({counter})
+export default combineReducers({topics})

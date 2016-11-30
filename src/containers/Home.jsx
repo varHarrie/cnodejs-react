@@ -1,6 +1,8 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
 import {HeaderTabs, Tab} from 'react-mdl'
 import TopicList from 'components/TopicList'
+import {fetchTopics} from 'actions'
 
 class Tabs extends Component {
   render () {
@@ -17,15 +19,30 @@ class Tabs extends Component {
 }
 
 class Home extends Component {
+  componentWillMount () {
+    this.props.dispatch(fetchTopics('', 1))
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const {tab, page} = nextProps
+    this.props.dispatch(fetchTopics(tab, page))
+  }
+
   render () {
+    const topics = this.props.topics
     return (
       <div>
-        <TopicList />
+        <TopicList topics={topics} />
       </div>
     )
   }
 }
 
+Home.propTypes = {
+  topics: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired
+}
+
 Home.Tabs = Tabs
 
-export default Home
+export default connect((state) => ({topics: state.topics}))(Home)

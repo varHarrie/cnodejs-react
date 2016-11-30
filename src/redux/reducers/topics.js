@@ -1,13 +1,17 @@
 import {createReducer} from 'redux-act'
 
 import {
-  setTopics
+  fetchTopics
 } from 'actions'
 
-const topics = createReducer({
-  [setTopics] (state, topics) {
-    return topics
-  }
-}, [])
+const initState = {
+  page: 1,
+  topics: []
+}
 
-export default topics
+export default createReducer({
+  [fetchTopics.ok] (state, payload) {
+    console.log(payload)
+    return payload
+  }
+}, initState)

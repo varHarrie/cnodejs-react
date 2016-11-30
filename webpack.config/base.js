@@ -15,7 +15,8 @@ module.exports = {
       styles: path.join(root, 'src/styles'),
       routes: path.join(root, 'src/routes'),
       actions: path.join(root, 'src/redux/actions'),
-      reducers: path.join(root, 'src/redux/reducers')
+      reducers: path.join(root, 'src/redux/reducers'),
+      apis: path.join(root, 'src/apis')
     },
     extensions: ['', '.js', '.jsx'],
     fallback: path.join(root, 'node_modules')

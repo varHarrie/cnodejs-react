@@ -11,7 +11,7 @@ module.exports = {
   resolve: {
     alias: {
       components: path.join(root, 'src/components'),
-      pages: path.join(root, 'src/pages'),
+      containers: path.join(root, 'src/containers'),
       styles: path.join(root, 'src/styles'),
       routes: path.join(root, 'src/routes'),
       actions: path.join(root, 'src/redux/actions'),

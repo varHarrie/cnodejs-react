@@ -3,3 +3,18 @@ body
 
 html, body, #app
   height: 100%
+
+.mdl-list
+  &__item
+    &-primary-content
+      position: relative
+      width: 100%
+      padding-left: 55px
+      .mdl-list__item-avatar
+        absolute: left 0 top 0
+      span
+        display: block
+        width: 100%
+        text-overflow: ellipsis
+        white-space: nowrap
+        overflow: hidden

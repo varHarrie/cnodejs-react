@@ -1,22 +1,20 @@
 import React, {Component, PropTypes} from 'react'
-import {Layout, Header, HeaderRow, Drawer, Navigation, Content} from 'react-mdl'
+import {Layout, Header, Drawer, Navigation, Content} from 'react-mdl'
 
 class App extends Component {
   render () {
     return (
       <div style={{height: '100%', position: 'relative'}}>
-        <Layout fixedHeader fixedTabs>
-          <Header style={{background: '#80bd01'}}>
-            <HeaderRow title='Cnode' />
-            {this.props.extra}
-          </Header>
+        <Layout fixedHeader>
+          <Header style={{background: '#80bd01'}} title='Cnode' />
           <Drawer title='菜单'>
             <Navigation>
-              <a href='#'>占位</a>
+              <a href='#'>论坛</a>
+              <a href='#'>个人</a>
             </Navigation>
           </Drawer>
           <Content>
-            {this.props.main}
+            {this.props.children}
           </Content>
         </Layout>
       </div>
@@ -25,8 +23,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  main: PropTypes.element,
-  extra: PropTypes.element
+  children: PropTypes.element
 }
 
 export default App

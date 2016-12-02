@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 
-import home from 'reducers/home'
+import topics from 'reducers/topics'
+import topic from 'reducers/topic'
 
-export default combineReducers({home})
+export default combineReducers({topics, topic})

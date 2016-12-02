@@ -99,5 +99,5 @@ Topics.propTypes = {
 }
 
 export default connect(
-  ({home: {topics, page, tab, loading}}) => ({topics, page, tab, loading})
+  ({topics: {topics, page, tab, loading}}) => ({topics, page, tab, loading})
 )(Topics)

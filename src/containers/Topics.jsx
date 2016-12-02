@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
-import {Tabs, Tab, List, ListItem, ListItemContent} from 'react-mdl'
+import {Layout, Header, Drawer, Navigation, Content, HeaderRow, HeaderTabs, Tab, List, ListItem, ListItemContent} from 'react-mdl'
 import {fetchTopics} from 'actions'
 
 const tabMap = {
@@ -12,20 +12,34 @@ const tabMap = {
   4: 'job'
 }
 
-function Header (props) {
+function TopHeader (props) {
   return (
-    <Tabs ripple activeTab={0} onChange={(tab) => props.tabChange(tabMap[tab], 1)}>
-      <Tab>全部</Tab>
-      <Tab>精华</Tab>
-      <Tab>分享</Tab>
-      <Tab>问答</Tab>
-      <Tab>招聘</Tab>
-    </Tabs>
+    <Header style={{background: '#80bd01'}}>
+      <HeaderRow title='Cnode' />
+      <HeaderTabs ripple style={{background: '#80bd01'}} activeTab={0} onChange={(tab) => props.tabChange(tabMap[tab], 1)}>
+        <Tab>全部</Tab>
+        <Tab>精华</Tab>
+        <Tab>分享</Tab>
+        <Tab>问答</Tab>
+        <Tab>招聘</Tab>
+      </HeaderTabs>
+    </Header>
   )
 }
 
-Header.propTypes = {
+TopHeader.propTypes = {
   tabChange: PropTypes.func.isRequired
+}
+
+function SideMenu (props) {
+  return (
+    <Drawer title='菜单'>
+      <Navigation>
+        <a href='#'>论坛</a>
+        <a href='#'>个人</a>
+      </Navigation>
+    </Drawer>
+  )
 }
 
 function TopicList (props) {
@@ -82,9 +96,16 @@ class Topics extends Component {
     const {tab, topics} = this.props
 
     return (
-      <div ref='container'>
-        <Header tab={tab} tabChange={this.load} />
-        <TopicList topics={topics} />
+      <div style={{height: '100%', position: 'relative'}}>
+        <Layout fixedHeader fixedTabs>
+          <TopHeader tab={tab} tabChange={this.load} />
+          <SideMenu />
+          <Content>
+            <div ref='container'>
+              <TopicList topics={topics} />
+            </div>
+          </Content>
+        </Layout>
       </div>
     )
   }

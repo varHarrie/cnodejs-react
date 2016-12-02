@@ -53,23 +53,37 @@ TopicList.propTypes = {
 class Topics extends Component {
   constructor (props, context) {
     super(props, context)
-    this.refresh = this.refresh.bind(this)
+    this.load = this.load.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
   }
 
-  componentWillMount () {
-    this.refresh()
+  componentDidMount () {
+    this.load()
+    this.refs.container.parentNode.addEventListener('scroll', this.handleScroll)
   }
 
-  refresh (tab = '', page = 1) {
+  componentWillUnmount () {
+    this.refs.container.parentNode.removeEventListener('scroll', this.handleScroll)
+  }
+
+  load (tab = '', page = 1) {
     this.props.dispatch(fetchTopics(tab, page))
+  }
+
+  handleScroll ({target: {offsetHeight, scrollTop, scrollHeight}}) {
+    const {tab, page, loading} = this.props
+    if (loading) return
+    if (scrollHeight - offsetHeight - scrollTop < 100) {
+      this.load(tab, page + 1)
+    }
   }
 
   render () {
     const {tab, topics} = this.props
 
     return (
-      <div>
-        <Header tab={tab} tabChange={this.refresh} />
+      <div ref='container'>
+        <Header tab={tab} tabChange={this.load} />
         <TopicList topics={topics} />
       </div>
     )
@@ -80,9 +94,10 @@ Topics.propTypes = {
   topics: PropTypes.array.isRequired,
   page: PropTypes.number.isRequired,
   tab: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 export default connect(
-  ({home: {topics, page, tab}}) => ({topics, page, tab})
+  ({home: {topics, page, tab, loading}}) => ({topics, page, tab, loading})
 )(Topics)

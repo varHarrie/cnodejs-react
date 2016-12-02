@@ -16,6 +16,7 @@ export default createReducer({
     return Object.assign({}, state, {loading: true})
   },
   [fetchTopics.ok] (state, {response: {tab, page, topics}}) {
+    if (page > 1) topics = state.topics.concat(topics)
     return {tab, page, topics, loading: false}
   }
 }, initState)

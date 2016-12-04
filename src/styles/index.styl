@@ -1,20 +1,25 @@
 body
-  background: #eee
+  margin: 0
 
-html, body, #app
+html, body, #app, .page
   height: 100%
 
-.mdl-list
-  &__item
-    &-primary-content
-      position: relative
-      width: 100%
-      padding-left: 55px
-      .mdl-list__item-avatar
-        absolute: left 0 top 0
-      span
-        display: block
-        width: 100%
-        text-overflow: ellipsis
-        white-space: nowrap
-        overflow: hidden
+a
+  text-decoration: none
+
+.ellipsis
+  text-overflow: ellipsis
+  width: 100%
+  white-space: nowrap
+  overflow: hidden
+
+.page-topics
+  box-sizing: border-box
+  padding-top: 112px
+  &__header
+    fixed: top 0 left 0
+    z-index: 100
+    width: 100%
+  &__list
+    height: 100%
+    overflow-y: auto
